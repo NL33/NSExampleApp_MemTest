@@ -8,6 +8,8 @@
  
  $ tns run ios --bundle --env.uglify --env.aot
  
+    Component code is in app / src / components.
+ 
  Mainly, the app has 3 different lists:
  
  1) RadListView with a dataset of about 24 items. The text within each item varies a little. This list appears "glitchy", because if you load the page and, as the FIRST scroll action, pull the list down and release, the list glitches (top item appears in two places at once). If you do not see this behavior, try leaving the page, loading it again, and trying a few more times. In my experience, this glitch occurs once the dataset gets to about 10(!) items or more.

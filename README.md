@@ -8,7 +8,7 @@
  
      $ tns run ios --bundle --env.uglify --env.aot
  
-    Component code is in app / src / components.
+ Component code is in app / src / components.
  
  Mainly, the app has 3 different lists:
  

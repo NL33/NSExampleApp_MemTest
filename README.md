@@ -19,9 +19,12 @@
  Comparing List (1 RLV) to List (2 ngFor), you are likely to see the following issues with List 1:
  
  i) Glitch occurs when you load the list and the first scroll action you take is to pull the list down and release.
+ 
  ii) If you click on an item in the list, the text expands. However, the container does not resize, so that the larger text is now hidden.
- (iii) The background should be gray in the list area. But it stays white.
- (iv) Generally I have found the scroll to be smoother with ngFor.
+ 
+ iii) The background should be gray in the list area. But it stays white.
+ 
+ iv) Generally I have found the scroll to be smoother with ngFor.
 
  This app also serves as a memory test. Info on that:
   

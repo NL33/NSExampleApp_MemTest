@@ -16,7 +16,7 @@
  
  3) RLV with a different dataset of about the same number of items. The values in this dataset are similar to each other; as a result, RLV seems to handle it better.
  ****
- Comparing List (1 RLV) to List (2 ngFor), you are likely to see the following issues with List 1:
+ Comparing List 1 (RLV) to List 2 (ngFor), you are likely to see the following issues with List 1:
  
     i) Glitch occurs when you load the list and the first scroll action you take is to pull the list down and release.
  

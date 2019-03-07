@@ -23,8 +23,7 @@
  (iii) The background should be gray in the list area. But it stays white.
  (iv) Generally I have found the scroll to be smoother with ngFor.
 
-
-This app also serves as a memory test. Info on that:
+ This app also serves as a memory test. Info on that:
   
   If you want to test memory use, try to build up a lot of memory. You can click on the video page at top right.
   

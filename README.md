@@ -6,7 +6,7 @@
  
  To use, clone/download the app, and run (using webpack, recommended);
  
- $ tns run ios --bundle --env.uglify --env.aot
+     $ tns run ios --bundle --env.uglify --env.aot
  
     Component code is in app / src / components.
  

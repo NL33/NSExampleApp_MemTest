@@ -34,4 +34,7 @@ export class StoredItemsComponent implements OnInit {
            })
         }
     }
+      listPage() {
+        this.router.navigate(["list-page"])
+    }
  }

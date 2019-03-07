@@ -3,8 +3,8 @@ import { Router, NavigationExtras } from "@angular/router";
 import * as localStorage from 'nativescript-localstorage';
 import { Page } from "tns-core-modules/ui/page";
 import { RouterExtensions } from 'nativescript-angular/router';
-
-declare let myGlobal: any
+import { PlayerItem } from '../../models/sample-array-model';
+import { PlayerItems } from '../../models/sample-array-model';
 
 @Component({
     selector: "ListPage",
@@ -13,54 +13,38 @@ declare let myGlobal: any
 })
 
 export class ListPageComponent implements OnInit {
-   public selectedArray: Array<any> = [];
-   public useArray: Array<any> = [];
-   private playerArray = [
-        { id: 1, name: "Ter Stegen", role: "Goalkeeper", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 3, name: "Piqué", role: "Defender", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 4, name: "I. Rakitic", role: "Midfielder", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 5, name: "Sergio", role: "Midfielder", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 6, name: "Denis Suárez", role: "Midfielder", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 7, name: "Arda", role: "Midfielder", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 8, name: "A. Iniesta", role: "Midfielder", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 9, name: "Suárez", role: "Forward", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 10, name: "Messi", role: "Forward", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 11, name: "Neymar", role: "Forward", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 12, name: "Rafinha", role: "Midfielder", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 13, name: "Cillessen", role: "Goalkeeper", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 14, name: "Mascherano", role: "Defender", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 17, name: "Paco Alcácer", role: "Forward", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 18, name: "Jordi Alba", role: "Defender", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 19, name: "Digne", role: "Defender", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 20, name: "Sergi Roberto", role: "Midfielder", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 21, name: "André Gomes", role: "Midfielder", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 22, name: "Aleix Vidal", role: "Midfielder", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 23, name: "Umtiti", role: "Defender", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 24, name: "Mathieu", role: "Defender", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] },
-        { id: 25, name: "Masip", role: "Goalkeeper", otherSuff: ['hello', 'there', 'this is just some stuff to add to the array. and here is some randome letters: adaagaf afafaf af dfssagsaghinsa faf asfaterad aff sgsdfarerarada wg agd gsdsadsagds we gsggsdwgetw vsgsdgsgsg sg sgsg sgewfwfwafsfsgsgsgeestwetwevfwfwfwf w fsf sf sf sfsdfwerwetwgwwewegwefaadadgadagef'] }
-       ]
+    public playerNameArray: Array<any> = [];
+    public useArray: Array<any> = [];
+    public selectedArray: Array<any> = [];
 
-    constructor(private router: Router, private routerExtensions: RouterExtensions, public page: Page) {
-
+    constructor(private router: Router) {
     }
 
     ngOnInit(): void {
-        console.log('now on list page. hopefully this uses some memory')
-        this.useArray = this.playerArray
-    } 
-
-    clickName(person){
-       this.selectedArray.push(person)
-       this.selectedArray.push(person)
-       this.selectedArray.push(person)
-       localStorage.setItem('selectedPeople', JSON.stringify(this.selectedArray))
+        this.useArray = PlayerItems
+        if ((localStorage.getItem('selectedPeople') !== null) && (localStorage.getItem('selectedPeople') !== 'undefined')) {
+            let localStorageSelections = JSON.parse(localStorage.getItem('selectedPeople'))
+            localStorageSelections.forEach((selection) => {
+                this.playerNameArray.push(selection.name)
+            })
+        }
     }
 
-    homePage(){
-        this.routerExtensions.navigate(["home"], {clearHistory: true})
+    addToArray(player) {
+        if ((this.playerNameArray as any).includes(player.name)) {
+            let index = this.playerNameArray.indexOf(player.name)
+            this.playerNameArray.splice(index, 1)
+        } else {
+            this.playerNameArray.push(player.name)
+            this.selectedArray.push(player)
+            this.selectedArray.push(player)
+            this.selectedArray.push(player)
+            localStorage.setItem('selectedPeople', JSON.stringify(this.selectedArray))
+        }
     }
 
-    showSavedItems(){
+    showSavedItems() {
         this.router.navigate(["stored-items"])
     }
- }
+
+} 

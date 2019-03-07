@@ -1,0 +1,26 @@
+<ActionBar class="action-bar" style="background-color: white; color: #007ae1">
+    <Label text="NgFor List" class="action-bar-title" style="color: black"></Label>
+    <ActionItem text="RLV, UniformData" ios.position="right" (tap)="rlvPage()"></ActionItem>
+</ActionBar>
+
+<GridLayout rows='*, 50, 75' style="background-color: gray">
+    <ScrollView row="0" style="background-color: gray" iosOverflowSafeArea="false">
+        <StackLayout iosOverflowSafeArea="false" style=" background-color: gray; text-align: center">
+            <StackLayout *ngFor="let player of useArray" (tap)="addToArray(player)" style="border-bottom-width: 2px; border-top-width: 2px; border-color: black; margin: 3px; margin-bottom: 20; background-color: white" [ngClass]="playerNameArray.includes(player.name)? 'largeFont' : 'smallFont'" iosOverflowSafeArea="false">
+                        <Label [text]="player.name" textWrap="true" style="font-size: 22; padding: 5"></Label>
+                        <Label textWrap="true" [text]="player.someStuff" style="padding: 5"></Label>
+                        <Label textWrap="true" text="Here is some more text. When you make the text bigger, does it still fit?" style="padding: 5"></Label>
+        </StackLayout>
+    </StackLayout>
+</ScrollView>
+    <GridLayout row="1" style="border-top-width: 8px">
+        <StackLayout>
+            <Label text="1. Notice how the glitch has gone away?" textWrap="true"></Label>
+        </StackLayout>
+    </GridLayout>
+    <GridLayout row="2" style="border-top-width: 8px">
+        <StackLayout>
+            <Label text="2. Notice how the list item containers auto-resize on click?" textWrap="true"></Label>
+        </StackLayout>
+    </GridLayout>
+</GridLayout>

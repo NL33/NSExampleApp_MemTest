@@ -1,0 +1,28 @@
+<ActionBar class="action-bar" style="background-color: white; color: #007ae1">
+    <Label text="RLV List" class="action-bar-title" style="color: black"></Label>
+    <ActionItem text="ngForVersion" ios.position="right" (tap)="ngForPage()"></ActionItem>
+</ActionBar>
+
+<GridLayout rows='*, 50, 75' style="background-color: gray">
+    <RadListView row="0" [items]="useArray" iosOverflowSafeArea="false" style="background-color: gray">
+        <ng-template tkListItemTemplate let-player="item">
+            <StackLayout style="border-bottom-width: 2px; border-top-width: 2px; margin: 3px; margin-bottom: 20; background-color: gray" (tap)="addToArray(player)" [ngClass]="playerNameArray.includes(player.name)? 'largeFont' : 'smallFont'" iosOverflowSafeArea="false">
+                <StackLayout style="background-color: white; text-align: center">
+                    <Label [text]="player.name" textWrap="true" style="font-size: 22; padding: 5"></Label>
+                    <Label textWrap="true" [text]="player.someStuff" style="padding: 5"></Label>
+                    <Label textWrap="true" text="Here is some more text. When you make the text bigger, does it still fit?" style="padding: 5"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ng-template>
+    </RadListView>
+    <GridLayout row="1" style="border-top-width: 8px">
+        <StackLayout>
+            <Label text="1. When page loads, pull the list down as the FIRST scroll action. Do you see the glitch?" textWrap="true"></Label>
+        </StackLayout>
+    </GridLayout>
+    <GridLayout row="2" style="border-top-width: 8px">
+        <StackLayout>
+            <Label text="2. Click on any item to make the text bigger in that box. Do you see the text get hidden bc the box does not resize?" textWrap="true"></Label>
+        </StackLayout>
+    </GridLayout>
+</GridLayout>

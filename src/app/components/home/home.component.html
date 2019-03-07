@@ -1,12 +1,27 @@
 <ActionBar class="action-bar" style="background-color: white;">
     <ActionItem text="Video Page" ios.position="left" (tap)="videoPage()"></ActionItem>
-    <Label class="action-bar-title" text="Home"></Label>
-    <ActionItem text="List Page" ios.position="right" (tap)="listPage()"></ActionItem>
+    <Label class="action-bar-title" text="RLV+Memory Test App"></Label>
 </ActionBar>
 
-<StackLayout>
-    <Label text="This is the home page of the memory example app. Instructions:" style="text-align: center; margin-bottom: 15" textWrap="true"></Label>
- 	<Label text="The goal is to build up the memory use of the app, and then return to this page and see if the memory use goes down." style="text-align: center; margin-bottom: 25" textWrap="true"></Label>
- 	<Label text="So click on the video page to play a video. When you return here, the video object will be destroyed." style="text-align: center; margin-bottom: 15; margin-bottom: 20" textWrap="true"></Label>
- 	<Label text="Click on the list page to view a long list. Once there, make a bunch of selections, and then click on the link at the bottom to view the list of selections. When you return here, the list will be cleared." style="text-align: center; margin-bottom: 15" textWrap="true"></Label>
+<StackLayout style="padding: 10">
+  <ScrollView>
+  	<StackLayout>
+	    <Label text="This is the home page of the RLV test and memory example app. Instructions:" style="margin-bottom: 15" textWrap="true"></Label>
+	 	<Label text="This app should demonstrate some differences between:" textWrap="true" style="margin-bottom: 5"></Label> 
+	 	<Label text="1) RadListView with varying data (the most common scenario, and the most glitchy)," textWrap="true" style="margin-bottom: 5"></Label>
+	 	<Label text="2) *ngFor with the same data (not as glitchy) and" textWrap="true" style="margin-bottom: 5"></Label> 
+	 	<Label text="3) RadListView with data that is more uniform (which RLV handles a little better)." textWrap="true" style="margin-bottom: 5"></Label>
+	 	<Label text="To see the differences, compare the lists below:" textWrap="true" style="margin: 15"></Label>
+
+	 	<Button text="Click for RLV with varying data (the most common, and most glitchy)" textWrap="true" style="font-size: 20; margin: 8; border-width: 4px; border-color: red; border-radius: 10" (tap)="rlvList1()"></Button>
+	 	<Button text="Click for *ngFor with that data (smoothest)" textWrap="true" style="margin: 8; font-size: 20; border-width: 4px; border-color: blue; border-radius: 10" (tap)="ngForList()"></Button>
+	 	<Button text="Click for RLV with more uniform data (not as glitchy)" textWrap="true" style="margin: 8; font-size: 20; border-width: 4px; border-color: orange; border-radius: 10" (tap)="rlvList2()"></Button>
+
+	 	<Label text="**********" style="text-align: center; margin-top: 15"></Label>
+	 	<Label text="This app also serves as a memory test. Info on that:" textWrap="true" style="margin: 5"></Label>
+	 	<Label text="If you want to test memory use, try to build up a lot of memory. You can click on the video page at top right." style="margin-bottom: 5"  textWrap="true"></Label>
+	 	<Label text="Even better, you can click on the red button here, and then go through to the other lists from there. On the last list (RLV with uniform data), you can also add items to local storage, to further use memory. Then, come back to the home page and see if memory use clears out." textWrap="true" style="margin-top: 15"></Label>
+
+	</StackLayout>
+</ScrollView>
 </StackLayout>

@@ -30,7 +30,15 @@ export class HomeComponent implements OnInit {
        this.router.navigate(["video-page"]) 
     }
 
-    listPage() {
+    rlvList1(){
+        this.router.navigate(["test-list-page"])
+    }
+
+    ngForList(){
+        this.router.navigate(["ngFor-test-list-page"])
+    }
+
+    rlvList2() {
         this.router.navigate(["list-page"])
     }
 }

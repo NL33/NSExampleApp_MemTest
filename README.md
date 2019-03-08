@@ -43,3 +43,13 @@
   4) Then return to the home page, where the saved items should be cleared out.
 
   5) After about 5 minutes on the app on a real device, repeating stels 1-4, I find memory use steadily increasing.
+
+  ******
+
+ Stats:
+
+ Nativescript 5.2.0
+
+ TNS core modules  5.2.2-rc-2019-03-01-112723-03
+
+ TNS-ios 5.2.0

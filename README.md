@@ -1,6 +1,6 @@
  This is the RLV test and memory example app. Built with NativeScript 5.2+ and Angular.
  
- Its purpose is to compare RadListView's performance against *nGFor.
+ Its purpose is to compare RadListView's performance against *ngFor.
  
  It is also to test out memory use.
  

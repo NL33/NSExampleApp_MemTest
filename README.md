@@ -32,4 +32,14 @@
   
   If you want to test memory use, try to build up a lot of memory. You can click on the video page at top right.
   
-  Even better, you can click on the red button here, and then go through to the other lists from there. On the last list (RLV with uniform data), you can also add items to local storage, to further use memory. Then, come back to the home page and see if memory use clears out.
+  Even better, try this:
+
+  1) Click on the red button on the home page to go to the first RLV list.
+
+  2) After scrolling around a bit, go directly to the ngFor list from the RLV list.
+
+  3) After scrolling there, go to the last RLV list. Scroll there and make selections. Then go the saved items page to view the selections.
+
+  4) Then return to the home page, where the saved items should be cleared out.
+
+  5) After about 5 minutes on the app on a real device, repeating stels 1-4, I find memory use steadily increasing.

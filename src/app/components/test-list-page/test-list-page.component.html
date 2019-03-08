@@ -3,7 +3,7 @@
     <ActionItem text="ngForVersion" ios.position="right" (tap)="ngForPage()"></ActionItem>
 </ActionBar>
 
-<GridLayout rows='*, 50, 75' style="background-color: gray">
+<GridLayout rows='*, 70, 75' style="background-color: gray">
     <RadListView row="0" [items]="useArray" iosOverflowSafeArea="false" style="background-color: gray">
         <ng-template tkListItemTemplate let-player="item">
             <StackLayout style="border-bottom-width: 2px; border-top-width: 2px; margin: 3px; margin-bottom: 20; background-color: gray" (tap)="addToArray(player)" [ngClass]="playerNameArray.includes(player.name)? 'largeFont' : 'smallFont'" iosOverflowSafeArea="false">

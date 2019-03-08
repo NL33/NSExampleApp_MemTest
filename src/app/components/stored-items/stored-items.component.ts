@@ -26,9 +26,7 @@ export class StoredItemsComponent implements OnInit {
 
     getStoredItems(){
         if ((localStorage.getItem('selectedPeople') !== null) && (localStorage.getItem('selectedPeople') !== 'undefined')) {
-            console.log('1')
            let localStorageSelections = JSON.parse(localStorage.getItem('selectedPeople'))
-           console.log('here you go = ' + JSON.stringify(localStorageSelections))
            localStorageSelections.forEach((selection)=>{
                this.selectedItems.push(selection)
            })

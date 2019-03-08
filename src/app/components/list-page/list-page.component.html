@@ -3,7 +3,7 @@
     <ActionItem text="savedItems" ios.position="right" (tap)="showSavedItems()"></ActionItem>
 </ActionBar>
 
-<GridLayout rows="*, 75, 70">
+<GridLayout rows="*, 85, 70">
     <GridLayout row="0" style="margin-top: 15px">
         <RadListView row="0" [items]="useArray" iosOverflowSafeArea="false" style="background-color: gray">
             <ng-template tkListItemTemplate let-player="item">

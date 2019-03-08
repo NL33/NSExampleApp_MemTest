@@ -15,26 +15,26 @@ export class HomeComponent implements OnInit {
     constructor(private router: RouterExtensions, private page: Page) {
     }
 
-    ngOnInit() {
-      console.log('home page loaded')
-         this.page.on('navigatedTo', (data) => {
-      this.clearStorage();
-    })
+    ngOnInit() {      
+        this.page.on('navigatedTo', (data) => {
+            console.log('home page loaded')
+            this.clearStorage();
+        })
     }
 
-    clearStorage(){
+    clearStorage() {
         localStorage.removeItem('selectedPeople')
     }
 
-    videoPage(){
-       this.router.navigate(["video-page"]) 
+    videoPage() {
+        this.router.navigate(["video-page"])
     }
 
-    rlvList1(){
+    rlvList1() {
         this.router.navigate(["test-list-page"])
     }
 
-    ngForList(){
+    ngForList() {
         this.router.navigate(["ngFor-test-list-page"])
     }
 
